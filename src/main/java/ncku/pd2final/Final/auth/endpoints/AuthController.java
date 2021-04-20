@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.UserDetailsManager;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
@@ -53,16 +54,24 @@ public class AuthController {
      */
     @PostMapping(value = REGISTER_ENDPOINT, produces = "application/json")
     public String register(@RequestBody RegisterRequestBody requestBody, HttpServletResponse response) {
-        CustomUserDetail user = new CustomUserDetail.Builder()
-                                        .passwordEncoder(passwordEncoder::encode)
-                                        .username(requestBody.getUsername())
-                                        .password(requestBody.getPassword())
-                                        .roles("PLAYER")
-                                        .playerStatus(PlayerStatus.NewPlayer(requestBody.getNickname(), requestBody.getFaction()))
-                                        .build();
+        CustomUserDetail user;
+        try {
+            user = new CustomUserDetail.Builder()
+                    .passwordEncoder(passwordEncoder::encode)
+                    .username(requestBody.getUsername())
+                    .password(requestBody.getPassword())
+                    .roles("PLAYER")
+                    .playerStatus(PlayerStatus.NewPlayer(requestBody.getNickname(), requestBody.getFaction()))
+                    .build();
+        } catch (IllegalArgumentException e) {
+            //some fields in requestBody is problematic
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            return "{\"success\": false, \"message\": \"wrong arguments\"}";
+        }
 
         try {
             manager.createUser(user);
+            response.setStatus(HttpServletResponse.SC_CREATED);
             return "{\"success\":true, \"auth\":\"/login\"}";
         } catch (IllegalArgumentException e) {
             //user already registered

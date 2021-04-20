@@ -42,6 +42,9 @@ public class PlayerStatus {
     }
 
     public static PlayerStatus NewPlayer(String nickname, String faction) {
+        if (nickname == null || faction == null) {
+            throw new IllegalArgumentException("nickname and faction should not be null");
+        }
         return new PlayerStatus(0, 0, nickname, faction);
     }
 }

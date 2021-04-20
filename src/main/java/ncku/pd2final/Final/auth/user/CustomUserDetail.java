@@ -22,6 +22,10 @@ public class CustomUserDetail extends User {
         System.out.println("user created");
     }
 
+    public PlayerStatus getPlayerStatus() {
+        return playerStatus;
+    }
+
     private CustomUserDetail(UserDetails user, PlayerStatus playerStatus) {
         this(
             user.getUsername(),
