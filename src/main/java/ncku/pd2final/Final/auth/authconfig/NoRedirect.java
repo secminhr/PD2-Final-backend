@@ -8,16 +8,24 @@ import java.io.IOException;
 
 /**
  * Used in {@link AuthConfiguration} and {@link JsonUsernamePasswordFilter} to provide the redirect behaviour of "No Redirection"
- *
  * @author secminhr
  */
 public class NoRedirect implements RedirectStrategy {
 
     private final Handler handler;
+
+    /**
+     * A convenient constructor for not using handler
+     */
     public NoRedirect() {
         this(null);
     }
 
+    /**
+     * Constructor with a handler.
+     * The handler is called when this strategy received a sendRedirect call.
+     * @param handler the handler to use
+     */
     public NoRedirect(Handler handler) {
         this.handler = handler;
     }
@@ -30,6 +38,11 @@ public class NoRedirect implements RedirectStrategy {
         }
     }
 
+    /**
+     * Delegate the behaviour to outside when receiving sendRedirect
+     *
+     * @author secminhr
+     */
     @FunctionalInterface
     public interface Handler {
         void onReceive(HttpServletRequest request, HttpServletResponse response) throws IOException;

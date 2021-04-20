@@ -4,7 +4,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.UserDetailsManager;
 
 /**
- * An interface providing access to {@link UserDetailsManager} and {@link PasswordEncoder}.
+ * An interface providing access to {@link UserDetailsManager} and {@link PasswordEncoder}, and managing user with its {@link PlayerStatus}
  * <p>
  * When implementing a new UserSource, remember to add {@link org.springframework.stereotype.Component} annotation so our auth system can automatically detect that.
  * </p>

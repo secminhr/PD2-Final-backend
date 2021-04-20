@@ -30,6 +30,13 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
     private final UserDetailsService service;
     private final PasswordEncoder passwordEncoder;
 
+    /**
+     * The constructor that is used automatically by SpringBoot framework. <br />
+     * It's unnecessary to call this in manual.
+     *
+     * @param entryPoint entrypoint used when login failed or receiving unauthorized request
+     * @param source the current {@link UserSource} in use
+     */
     public AuthConfiguration(@Autowired AuthenticationEntryPoint entryPoint,
                              @Autowired @Qualifier(UserSource.CURRENT_USER_SOURCE_QUALIFIER) UserSource source) {
         this.entryPoint = entryPoint;

@@ -1,5 +1,11 @@
 package ncku.pd2final.Final.auth.user;
 
+/**
+ * A plain object describing a player's status. <br/>
+ * One may need to change this if a new status in introduced.
+ *
+ * @author secminhr
+ */
 public class PlayerStatus {
     private int exp;
     private int level;
