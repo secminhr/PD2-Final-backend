@@ -1,10 +1,10 @@
 package ncku.pd2final.Final.auth.authconfig;
 
+import ncku.pd2final.Final.auth.endpoints.AuthController;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -19,7 +19,7 @@ import java.io.IOException;
 public class AuthEntry implements AuthenticationEntryPoint {
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException {
-        String responseMessage = "{\"success\": false, \"auth\":\"/login\"";
+        String responseMessage = "{\"success\": false, \"auth\":\"" + AuthController.LOGIN_ENDPOINT + "\"";
         if (request.getServletPath().equals("/error")) {
             //login failed
             responseMessage += ", \"message\":\"login failed\"";

@@ -25,6 +25,7 @@ public class AuthController {
 
     public static final String REGISTER_ENDPOINT = "/register";
     public static final String LOGIN_ENDPOINT = "/login";
+    public static final String INFO_ENDPOINT = "/info";
 
     private final UserDetailsManager manager;
     private final PasswordEncoder passwordEncoder;
@@ -46,7 +47,7 @@ public class AuthController {
         return "private";
     }
 
-    @GetMapping(value = "/info", produces = "application/json")
+    @GetMapping(value = INFO_ENDPOINT, produces = "application/json")
     public String info(Principal principal) {
         String username = principal.getName();
         CustomUserDetail user = (CustomUserDetail) manager.loadUserByUsername(username);
@@ -76,11 +77,11 @@ public class AuthController {
         try {
             manager.createUser(user);
             response.setStatus(HttpServletResponse.SC_CREATED);
-            return "{\"success\":true, \"auth\":\"/login\"}";
+            return "{\"success\":true, \"auth\":\"" + LOGIN_ENDPOINT + "\"}";
         } catch (IllegalArgumentException e) {
             //user already registered
             response.setStatus(HttpServletResponse.SC_CONFLICT);
-            return "{\"success\": false, \"message\": \"username already exists\", \"auth\":\"/login\"}";
+            return "{\"success\": false, \"message\": \"username already exists\", \"auth\":\"" + LOGIN_ENDPOINT + "\"}";
         }
     }
 
