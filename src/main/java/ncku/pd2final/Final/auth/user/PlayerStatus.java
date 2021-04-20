@@ -41,6 +41,13 @@ public class PlayerStatus {
         return faction;
     }
 
+    public String toJson() {
+        return "{\"exp\":" + exp + ", " +
+                "\"level\":" + level + ", " +
+                "\"nickname\":\"" + nickname + "\", " +
+                "\"faction\": \"" + faction + "\"}";
+    }
+
     public static PlayerStatus NewPlayer(String nickname, String faction) {
         if (nickname == null || faction == null) {
             throw new IllegalArgumentException("nickname and faction should not be null");

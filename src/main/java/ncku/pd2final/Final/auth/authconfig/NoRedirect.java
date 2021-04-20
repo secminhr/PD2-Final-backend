@@ -12,8 +12,26 @@ import java.io.IOException;
  * @author secminhr
  */
 public class NoRedirect implements RedirectStrategy {
+
+    private final Handler handler;
+    public NoRedirect() {
+        this(null);
+    }
+
+    public NoRedirect(Handler handler) {
+        this.handler = handler;
+    }
+
     @Override
     public void sendRedirect(HttpServletRequest request, HttpServletResponse response, String url) throws IOException {
         //don't redirect
+        if (handler != null) {
+            handler.onReceive(request, response);
+        }
+    }
+
+    @FunctionalInterface
+    public interface Handler {
+        void onReceive(HttpServletRequest request, HttpServletResponse response) throws IOException;
     }
 }

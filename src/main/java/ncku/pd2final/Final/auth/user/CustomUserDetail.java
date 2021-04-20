@@ -9,6 +9,10 @@ import java.util.function.Function;
 
 public class CustomUserDetail extends User {
     private final PlayerStatus playerStatus;
+    public PlayerStatus getPlayerStatus() {
+        return playerStatus;
+    }
+
     private CustomUserDetail(String username,
                              String password,
                              boolean enabled,
@@ -19,14 +23,9 @@ public class CustomUserDetail extends User {
                              PlayerStatus playerStatus) {
         super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
         this.playerStatus = playerStatus;
-        System.out.println("user created");
     }
 
-    public PlayerStatus getPlayerStatus() {
-        return playerStatus;
-    }
-
-    private CustomUserDetail(UserDetails user, PlayerStatus playerStatus) {
+    public CustomUserDetail(UserDetails user, PlayerStatus playerStatus) {
         this(
             user.getUsername(),
             user.getPassword(),
@@ -37,6 +36,11 @@ public class CustomUserDetail extends User {
             user.getAuthorities(),
             playerStatus
         );
+    }
+
+    public String toJson() {
+        return "{\"username\": \"" + getUsername() + "\", " +
+                "\"status\": " + playerStatus.toJson() + "}";
     }
 
     public static class Builder {

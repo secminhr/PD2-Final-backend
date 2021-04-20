@@ -5,14 +5,11 @@ import ncku.pd2final.Final.auth.user.PlayerStatus;
 import ncku.pd2final.Final.auth.user.UserSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.UserDetailsManager;
-import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletResponse;
+import java.security.Principal;
 
 /**
  * Provide api endpoints for app to use. <br>
@@ -47,6 +44,13 @@ public class AuthController {
     @GetMapping("/private")
     public String privatePoint() {
         return "private";
+    }
+
+    @GetMapping(value = "/info", produces = "application/json")
+    public String info(Principal principal) {
+        String username = principal.getName();
+        CustomUserDetail user = (CustomUserDetail) manager.loadUserByUsername(username);
+        return user.toJson();
     }
 
     /**

@@ -37,7 +37,11 @@ public class JsonUsernamePasswordFilter extends UsernamePasswordAuthenticationFi
         );
         //make successful login return HTTP_OK rather than redirection
         SavedRequestAwareAuthenticationSuccessHandler handler = new SavedRequestAwareAuthenticationSuccessHandler();
-        handler.setRedirectStrategy(new NoRedirect());
+        handler.setRedirectStrategy(new NoRedirect((request, response) -> {
+            response.getWriter().write("{\"success\": true, \"info\":\"/info\"}");
+            response.setStatus(HttpServletResponse.SC_OK);
+            response.setContentType("application/json");
+        }));
         setAuthenticationSuccessHandler(handler);
     }
 
