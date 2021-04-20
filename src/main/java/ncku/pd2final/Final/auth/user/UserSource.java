@@ -16,8 +16,20 @@ import org.springframework.security.provisioning.UserDetailsManager;
  * @author secminhr
  */
 public interface UserSource {
+    //auth
     UserDetailsManager getUserDetailsManager();
     PasswordEncoder getPasswordEncoder();
+
+    //status
+    default void addExp(CustomUserDetail detail, int exp) {
+        detail.getPlayerStatus().addExp(exp);
+    }
+    default void levelUp(CustomUserDetail detail) {
+        detail.getPlayerStatus().levelUp();
+    }
+    default void setNickname(CustomUserDetail detail, String nickname) {
+        detail.getPlayerStatus().setNickname(nickname);
+    }
 
     String CURRENT_USER_SOURCE_QUALIFIER = "InMemoryUserSource";
 }

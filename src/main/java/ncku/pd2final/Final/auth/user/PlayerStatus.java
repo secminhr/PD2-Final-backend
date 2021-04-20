@@ -17,7 +17,7 @@ public class PlayerStatus {
         return exp;
     }
 
-    public void addExp(int exp) {
+    void addExp(int exp) {
         this.exp += exp;
     }
 
@@ -25,7 +25,7 @@ public class PlayerStatus {
         return level;
     }
 
-    public void levelUp() {
+    void levelUp() {
         this.level++;
     }
 
@@ -33,7 +33,7 @@ public class PlayerStatus {
         return nickname;
     }
 
-    public void setNickname(String nickname) {
+    void setNickname(String nickname) {
         this.nickname = nickname;
     }
 
