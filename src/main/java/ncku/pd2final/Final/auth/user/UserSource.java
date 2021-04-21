@@ -20,16 +20,24 @@ public interface UserSource {
     UserDetailsManager getUserDetailsManager();
     PasswordEncoder getPasswordEncoder();
 
-    //status
-    default void addExp(CustomUserDetail detail, int exp) {
-        detail.getPlayerStatus().addExp(exp);
-    }
-    default void levelUp(CustomUserDetail detail) {
-        detail.getPlayerStatus().levelUp();
-    }
-    default void setNickname(CustomUserDetail detail, String nickname) {
-        detail.getPlayerStatus().setNickname(nickname);
-    }
+    //provide methods to modify player's status
+    /**
+     * Add player's experience point.
+     * @param username the username of the target user
+     * @param exp experience point "add to" the user
+     */
+    void addExp(String username, int exp);
+    /**
+     * Level up a user
+     * @param username the username of the target user
+     */
+    void levelUp(String username);
+    /**
+     * Set a user's nickname.
+     * @param username the username of the target user
+     * @param nickname new nickname
+     */
+    void setNickname(String username, String nickname);
 
     String CURRENT_USER_SOURCE_QUALIFIER = "InMemoryUserSource";
 }

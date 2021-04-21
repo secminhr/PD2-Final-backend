@@ -37,6 +37,24 @@ public class InMemoryUserSource implements UserSource {
         return new Argon2PasswordEncoder();
     }
 
+    @Override
+    public void addExp(String username, int exp) {
+        CustomUserDetail user = (CustomUserDetail) manager.loadUserByUsername(username);
+        user.getPlayerStatus().addExp(exp);
+    }
+
+    @Override
+    public void levelUp(String username) {
+        CustomUserDetail user = (CustomUserDetail) manager.loadUserByUsername(username);
+        user.getPlayerStatus().levelUp();
+    }
+
+    @Override
+    public void setNickname(String username, String nickname) {
+        CustomUserDetail user = (CustomUserDetail) manager.loadUserByUsername(username);
+        user.getPlayerStatus().setNickname(nickname);
+    }
+
     private static class UserManager extends InMemoryUserDetailsManager {
         private final Map<String, PlayerStatus> statusMap = new HashMap<>();
 
