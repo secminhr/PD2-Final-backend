@@ -9,6 +9,8 @@ public class RegisterRequestBody {
     private String username;
     private String nickname;
     private String password;
+
+    //TODO: Reconsider the type of faction carefully, this is only a temporary solution.
     private String faction;
 
     public String getUsername() {
