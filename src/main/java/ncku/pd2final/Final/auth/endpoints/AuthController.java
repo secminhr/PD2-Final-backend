@@ -17,6 +17,10 @@ import java.security.Principal;
  * <p>
  * For documentation for these apis, see Endpoints.md in auth folder.</a>
  * </p>
+ * <p>
+ * Modify this class if one want to add more endpoints related to user management and auth system.
+ * After adding a new endpoint, remember to update Endpoints.md also.
+ * </p>
  *
  * @author secminhr
  */
@@ -47,6 +51,9 @@ public class AuthController {
         return "private";
     }
 
+    /**
+     * An endpoint for a current logged in user to get its player data.
+     */
     @GetMapping(value = INFO_ENDPOINT, produces = "application/json")
     public String info(Principal principal) {
         String username = principal.getName();
