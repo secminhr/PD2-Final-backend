@@ -16,6 +16,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler;
 
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * Sets up necessary configuration for authentication in SpringBoot. <br>
  * Will automatically look up the entry point when login failure and the current using {@link UserSource}.
@@ -56,7 +58,7 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
         //setup logout handler to return HTTP_OK rather than redirection
         http.logout(logout -> {
             SimpleUrlLogoutSuccessHandler handler = new SimpleUrlLogoutSuccessHandler();
-            handler.setRedirectStrategy(new NoRedirect());
+            handler.setRedirectStrategy(new NoRedirect((request, response) -> response.setStatus(HttpServletResponse.SC_NO_CONTENT)));
             logout.logoutSuccessHandler(handler);
         });
 
