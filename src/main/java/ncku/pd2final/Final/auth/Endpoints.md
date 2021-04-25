@@ -139,7 +139,7 @@ For example:
 ```json
 {
     "success": false,
-    "auth": "{/login"
+    "auth": "/login"
 }
 ```
 ---
