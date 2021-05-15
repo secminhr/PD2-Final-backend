@@ -22,7 +22,7 @@ dependencies {
 	implementation group: 'com.alibaba', name: 'fastjson', version: '1.2.75'
 	compile 'com.github.NaikSoftware:StompProtocolAndroid:1.1.1'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	implementation 'com.github.User:Repo:Tag'
+
 }
 
 test {
