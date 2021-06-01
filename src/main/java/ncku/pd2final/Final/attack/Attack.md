@@ -5,7 +5,7 @@ This documentation describes the endpoints related to calculating the attack poi
 ### Attack
 Calculate attack points.
 
-**URL**: `/attck`
+**URL**: `/attack`
 
 **Method**: `GET`
 
@@ -28,3 +28,13 @@ Players pass through three points
 **Success response** : Nothing
 
 **Status code** : `204 No Content`
+
+**if**
+
+**Condition** :The player didn't log in before calling this endpoints.
+```json
+{
+  "success": false,
+  "auth": "/login"
+} 
+```
