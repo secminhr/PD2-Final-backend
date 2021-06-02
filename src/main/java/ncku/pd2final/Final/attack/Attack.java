@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 
 @RestController
@@ -47,6 +48,22 @@ public class Attack {
 //        }
 
     }
+
+    @GetMapping(value = "/attack")
+    public String checkData(@RequestParam double[] lat,
+                            @RequestParam double[] lon,
+                            @RequestParam double time,
+                            @RequestParam double[] purpose,
+                            HttpServletResponse response) {
+        if (lat != null && lon != null && purpose != null) {
+            response.setStatus(HttpServletResponse.SC_NO_CONTENT);
+            return "{\"success\": true}";
+        } else {
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            return "{\"success\": false, \"message\": \"Some arguments leak.\"}";
+        }
+
+}
     public double showAttackPoints(){
         return attackPoints;
     }

@@ -45,20 +45,6 @@ Players pass through three points
 
 
 ####Error Response
-**Condition** :The player didn't log in before calling this endpoint.
-
-**Status code**: `401 Unauthorized`
-
-**Content**
-```json
-{
-  "success": false,
-  "auth": "/login"
-} 
-```
-
-**Or**
-
 **Condition** :Some parameters leak.
 
 **Status code**: `400 Bad Request`
