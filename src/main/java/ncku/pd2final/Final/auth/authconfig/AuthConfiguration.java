@@ -53,8 +53,8 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
                 .addFilter(new JsonUsernamePasswordFilter(authenticationManager()))
                 .authorizeRequests()
                 .antMatchers(AuthController.REGISTER_ENDPOINT).permitAll()
-                .anyRequest().permitAll();
-//                .anyRequest().authenticated();
+//                .anyRequest().permitAll();
+                .anyRequest().authenticated();
 
         //setup logout handler to return HTTP_OK rather than redirection
         http.logout(logout -> {
