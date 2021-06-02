@@ -13,7 +13,7 @@ Calculate attack points.
 ```aidl
 /attack?lat={latitude of point_0}&lat={latitude of point_1}&...&lat={latitude of point_n}
        &lon={lonfgitude of point_0}&lon={longitude of point_1}&...&lon={longitude of point_n}
-       &time={the time that players had  recorded}
+       &time={the time (minutes) that players had  recorded}
        &purpose={the "latitude" of the purpose that players wnt to attack}
        &purpose={the "longitude" of the purpose that players wnt to attack}  
 ```
