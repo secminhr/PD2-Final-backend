@@ -10,13 +10,20 @@ public class PlayerStatus {
     private int exp;
     private int level;
     private String nickname;
-    private final String faction;
+//    private final String faction;
 
-    public PlayerStatus(int exp, int level, String nickname, String faction) {
+    public PlayerStatus(int exp, int level, String nickname/*, String faction*/) {
         this.exp = exp;
         this.level = level;
         this.nickname = nickname;
-        this.faction = faction;
+//        this.faction = faction;
+    }
+
+    public static PlayerStatus NewPlayer(String nickname) {
+        if(nickname == null){
+            throw new IllegalArgumentException("nickname should not be null");
+        }
+        return new PlayerStatus(0, 0, nickname);
     }
 
     public int getExp() {
@@ -43,21 +50,23 @@ public class PlayerStatus {
         this.nickname = nickname;
     }
 
-    public String getFaction() {
-        return faction;
-    }
+//    public String getFaction() {
+//        return faction;
+//    }
 
     public String toJson() {
         return "{\"exp\":" + exp + ", " +
                 "\"level\":" + level + ", " +
-                "\"nickname\":\"" + nickname + "\", " +
-                "\"faction\": \"" + faction + "\"}";
+                "\"nickname\":\"" + nickname + "\", "
+//                + "\"faction\": \"" + faction + "\"}"
+                ;
     }
 
     public static PlayerStatus NewPlayer(String nickname, String faction) {
         if (nickname == null || faction == null) {
-            throw new IllegalArgumentException("nickname and faction should not be null");
+//            throw new IllegalArgumentException("nickname and faction should not be null");
+            throw new IllegalArgumentException("nickname should not be null");
         }
-        return new PlayerStatus(0, 0, nickname, faction);
+        return new PlayerStatus(0, 0, nickname/*, faction*/);
     }
 }

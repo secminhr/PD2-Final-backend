@@ -73,7 +73,7 @@ public class AuthController {
                     .username(requestBody.getUsername())
                     .password(requestBody.getPassword())
                     .roles("PLAYER")
-                    .playerStatus(PlayerStatus.NewPlayer(requestBody.getNickname(), requestBody.getFaction()))
+                    .playerStatus(PlayerStatus.NewPlayer(requestBody.getNickname()))
                     .build();
         } catch (IllegalArgumentException e) {
             //some fields in requestBody is problematic

@@ -11,7 +11,7 @@ public class RegisterRequestBody {
     private String password;
 
     //TODO: Reconsider the type of faction carefully, this is only a temporary solution.
-    private String faction;
+//    private String faction;
 
     public String getUsername() {
         return username;
@@ -23,9 +23,9 @@ public class RegisterRequestBody {
         return nickname;
     }
 
-    public String getFaction() {
-        return faction;
-    }
+//    public String getFaction() {
+//        return faction;
+//    }
 
     public void setUsername(String username) {
         this.username = username;
@@ -36,7 +36,7 @@ public class RegisterRequestBody {
     public void setNickname(String nickname) {
         this.nickname = nickname;
     }
-    public void setFaction(String faction) {
-        this.faction = faction;
-    }
+//    public void setFaction(String faction) {
+//        this.faction = faction;
+//    }
 }
