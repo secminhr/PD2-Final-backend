@@ -12,7 +12,10 @@ Calculate attack points.
 **Request Data**
 ```aidl
 /attack?lat={latitude of point_0}&lat={latitude of point_1}&...&lat={latitude of point_n}
-       &lon={lonfgitude of point_0}&lon={longitude of point_1}&...&lon={longitude of point_n}  
+       &lon={lonfgitude of point_0}&lon={longitude of point_1}&...&lon={longitude of point_n}
+       &time={the time that players had  recorded}
+       &purpose={the "latitude" of the purpose that players wnt to attack}
+       &purpose={the "longitude" of the purpose that players wnt to attack}  
 ```
 **Example**
 
@@ -22,7 +25,10 @@ Players pass through three points
 (22.999638457690317, 120.22040945831554 ).
 ```aidl
 /attack?lat=23.000663924688777&lat=23.000795088510326&lat=22.999638457690317
-       &lon=120.2236738193727&lon=120.22048718119788&lon=120.22040945831554  
+       &lon=120.2236738193727&lon=120.22048718119788&lon=120.22040945831554
+       &time=15
+       &purpose=22.991945528467088
+       &purpose=120.20656731792185
 ```
 
 **Success response** : Nothing
@@ -31,7 +37,7 @@ Players pass through three points
 
 **if**
 
-**Condition** :The player didn't log in before calling this endpoints.
+**Condition** :The player didn't log in before calling this endpoint.
 ```json
 {
   "success": false,
