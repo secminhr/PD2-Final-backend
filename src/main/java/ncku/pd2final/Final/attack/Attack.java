@@ -13,7 +13,11 @@ public class Attack {
     double[] purpose;
     //latitude = 緯度 ； longitude = 經度！！！
     @GetMapping(value = "/attack")
-    public void attack(@RequestParam double[] lat, @RequestParam double[] lon, double time, double[] purpose){
+    public void attack(@RequestParam double[] lat,
+                       @RequestParam double[] lon,
+                       @RequestParam double time,
+                       @RequestParam double[] purpose)
+    {
 
         double[][] lAL = new double[lat.length][2] ; //lAL means latitude and longitude
         for(int i=0; i<lat.length; i++){
@@ -24,11 +28,23 @@ public class Attack {
         }
 
 
-        DistanceCalculate test = new DistanceCalculate();
-//        System.out.println( test.showMessage(lAL)+ " m");
+        DistanceCalculate test = new DistanceCalculate()   ;
+
         attackPoints = test.showMessage(lAL)*0.3 ;
         this.time = time;
         this.purpose = purpose;
+
+//        System.out.println("System is working!");
+//        for(double latitude : lat){
+//            System.out.println(latitude);
+//        }
+//        for(double longitude : lon){
+//            System.out.println(longitude);
+//        }
+//        System.out.println(time);
+//        for(double location : purpose){
+//            System.out.println(location);
+//        }
 
     }
     public double showattackPoints(){
