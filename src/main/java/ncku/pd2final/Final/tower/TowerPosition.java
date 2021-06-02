@@ -17,7 +17,7 @@ public class TowerPosition {
 	@GetMapping(value = "/towerAndBlood")
 	public String towerAndBlood() {
 		CalculateBlood blood = new CalculateBlood();
-		towerPosition(position);
+		positionAndBlood(position);
 		blood.updateBlood();
 		return "Update completed.";
 	}
