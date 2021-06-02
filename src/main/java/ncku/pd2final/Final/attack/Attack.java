@@ -47,7 +47,7 @@ public class Attack {
 //        }
 
     }
-    public double showattackPoints(){
+    public double showAttackPoints(){
         return attackPoints;
     }
     public double showTime(){
