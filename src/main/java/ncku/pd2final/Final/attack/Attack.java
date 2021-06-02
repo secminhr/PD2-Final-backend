@@ -34,10 +34,10 @@ public class Attack {
     public double showattackPoints(){
         return attackPoints;
     }
-    public double showtime(){
+    public double showTime(){
         return time;
     }
-    public double[] showpuepose(){
+    public double[] showPurpose(){
         return purpose;
     }
 
