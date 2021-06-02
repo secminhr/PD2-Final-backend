@@ -73,8 +73,7 @@ public class CalculateBlood {
 	}
 	/*
 	 * 扣血
-   * 會回傳double[血量、lat、lng]
-   * 如果遊戲結束，會回傳double[-1、-1、-1]
+ 	 * 會回傳double[血量、lat、lng]，如果遊戲結束，會回傳double[-1、-1、-1]
 	 */
 	
 	public boolean checkBlood(int[] remainBlood) {
