@@ -1,6 +1,4 @@
 package ncku.pd2final.Final.websocket;
-import ncku.pd2final.Final.tower.CalculateBlood;
-
 
 import com.alibaba.fastjson.JSON;
 import org.springframework.stereotype.Component;
@@ -15,10 +13,10 @@ import javax.websocket.server.ServerEndpoint;
 
 @ServerEndpoint(value = "/websocket/checkgame")
 @Component
-public class checkGame extends CalculateBlood {
+public class checkGame {
 
     private Session session;
-    private double message;
+    private double message ;
 
 
     @OnOpen
