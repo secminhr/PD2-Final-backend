@@ -1,3 +1,5 @@
+package ncku.pd2final.Final.tower;
+
 public class CalculateBlood {
 	int wholeblood = 2500;
 	double[][] positions = new double[2][4];
