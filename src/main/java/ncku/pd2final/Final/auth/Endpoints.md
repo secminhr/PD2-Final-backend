@@ -14,8 +14,7 @@ Register a new player.
 {
   "username": "{specified username}",
   "nickname": "{display name of the player}",
-  "password": "{plain password}",
-  "faction": "{chosen faction}"
+  "password": "{plain password}"
 }
 ```
 
@@ -160,8 +159,7 @@ For example:
     "status": {
         "exp": {current experience point},
         "level": {current level},
-        "nickname": "{nickname}",
-        "faction": "{chosen faction}"
+        "nickname": "{nickname}"
     }
 }
 ```

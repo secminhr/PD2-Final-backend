@@ -55,11 +55,10 @@ public class PlayerStatus {
 //    }
 
     public String toJson() {
-        return "{\"exp\":" + exp + ", " +
-                "\"level\":" + level + ", " +
-                "\"nickname\":\"" + nickname + "\", "
-//                + "\"faction\": \"" + faction + "\"}"
-                ;
+//        return "{    \"exp\":" + exp + ", " + "\"level\":" + level + ", " + "\"nickname\":\"" + nickname }" ;
+
+        return "{\"exp\" :"  +   exp   +  ","  + "\"level\":"  +  level  +  ","  +  "\"nickname\":"  +  "\""  +  nickname  +  "\""  +  "}"      ;
+
     }
 
     public static PlayerStatus NewPlayer(String nickname, String faction) {
