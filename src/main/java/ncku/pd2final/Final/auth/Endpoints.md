@@ -171,15 +171,13 @@ For a username whose
 - experience point is 0
 - level is 0
 - nickname (display name) is `s1s`
-- and chosen faction is `A`
 ```json
 {
     "username": "sssss",
     "status": {
         "exp": 0,
         "level": 0,
-        "nickname": "s1s",
-        "faction": "A"
+        "nickname": "s1s"
     }
 }
 ```
