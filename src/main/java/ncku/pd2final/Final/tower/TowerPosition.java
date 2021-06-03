@@ -9,14 +9,23 @@ public class TowerPosition {
 	double lat[] = {22.997794073739134, 22.997794073739134, 22.998665689755802,  22.997794073739134, 22.997794073739134, 22.998665689755802, 23.000408921789038, 23.001280537805706, 23.001280537805706, 23.001280537805706, 23.001280537805706, 23.000408921789038};
 	double lng[] = {120.2159443786227, 120.2176546709311, 120.2159443786227, 120.2210752555479, 120.2227855478563, 120.2227855478563, 120.2227855478563, 120.2227855478563, 120.2210752555479, 120.2176546709311, 120.2159443786227, 120.2159443786227};
 	double[][] position = {{lat[0], lat[1], lat[2], lat[3], lat[4], lat[5], lat[6], lat[7], lat[8], lat[9], lat[10], lat[11]},
-			       {lng[0], lng[1], lng[2], lng[3], lng[4], lng[5], lng[6], lng[7], lng[8], lng[9], lng[10], lng[11]}};
+			   			   {lng[0], lng[1], lng[2], lng[3], lng[4], lng[5], lng[6], lng[7], lng[8], lng[9], lng[10], lng[11]}};
 	double[][] randomPosition = new double[2][4];
 	double[][] positionAndBlood = new double[3][4];
-	
+	//隨機選出四個經緯度
+	int quadrant1 = (int)(Math.random() * 3); //隨機出0~2
+	int quadrant2 = (int)(Math.random() * 3 + 3); //隨機出3~5
+	int quadrant3 = (int)(Math.random() * 3 + 6); //隨機出6~8
+	int quadrant4 = (int)(Math.random() * 3 + 9); // 隨機出9~11
+			
 	
 	@GetMapping(value = "/towerAndBlood")
 	public String towerAndBlood() {
 		CalculateBlood blood = new CalculateBlood();
+		quadrant1 = (int)(Math.random() * 3);     // 
+		quadrant2 = (int)(Math.random() * 3 + 3); //重新隨機數字
+		quadrant3 = (int)(Math.random() * 3 + 6); //
+		quadrant4 = (int)(Math.random() * 3 + 9); // 
 		positionAndBlood();
 		blood.updateBlood();
 		return "Update completed.";
@@ -26,12 +35,6 @@ public class TowerPosition {
 	 */
 	@GetMapping(value = "/positionAndBlood")
 	public double[][] positionAndBlood() {
-		//隨機選出四個經緯度
-		int quadrant1 = (int)(Math.random() * 3); //隨機出0~2
-		int quadrant2 = (int)(Math.random() * 3 + 3); //隨機出3~5
-		int quadrant3 = (int)(Math.random() * 3 + 6); //隨機出6~8
-		int quadrant4 = (int)(Math.random() * 3 + 9); // 隨機出9~11
-		
 		for(int i = 0; i < 2; i++) {
 			randomPosition[i][0] = position[i][quadrant1];
 			randomPosition[i][1] = position[i][quadrant2];
@@ -52,6 +55,7 @@ public class TowerPosition {
 		}
 		
 		return positionAndBlood;
+		
 	}
 	/*
 	 * 隨機堡壘位置，再把出來的東西丟給Blood的class
