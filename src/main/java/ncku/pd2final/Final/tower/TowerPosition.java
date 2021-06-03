@@ -24,7 +24,7 @@ public class TowerPosition {
 	/*
 	 * 儲存所有的堡壘位置，並去隨機堡壘位置
 	 */
-	@GetMapping(value = "positionAndBlood")
+	@GetMapping(value = "/positionAndBlood")
 	public double[][] positionAndBlood(double[][] position) {
 		//隨機選出四個經緯度
 		int quadrant1 = (int)(Math.random() * 3); //隨機出0~2
@@ -55,6 +55,8 @@ public class TowerPosition {
 	}
 	/*
 	 * 隨機堡壘位置，再把出來的東西丟給Blood的class
-	 * 也可以重新隨機
+	 * positionAndBlood[0][]:lat
+	 * positionAndBlood[1][]:lng
+	 * positionAndBlood[2][]:blood
 	 */
 }
