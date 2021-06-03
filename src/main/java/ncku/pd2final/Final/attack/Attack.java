@@ -8,7 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 
 @RestController
 public class Attack {
-    double attackPoints;
+    double preAttackPoints ;
+    int attackPoints;
     double time;
     double[] purpose;
     //latitude = 緯度 ； longitude = 經度！！！
@@ -35,7 +36,9 @@ public class Attack {
             response.setStatus(HttpServletResponse.SC_NO_CONTENT);
             DistanceCalculate test = new DistanceCalculate() ;
 
-            attackPoints = test.showMessage(lAL)*0.3 ;
+
+            preAttackPoints = test.showMessage(lAL)*0.3 ;
+            attackPoints =  (int)preAttackPoints ;
             this.time = time;
             this.purpose = purpose;
 
