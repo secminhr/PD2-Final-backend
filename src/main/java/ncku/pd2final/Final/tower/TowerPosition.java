@@ -15,22 +15,18 @@ public class TowerPosition {
 	double[][] randomPosition = new double[2][4];
 	double[][] positionAndBlood = new double[3][4];
 	//隨機選出四個經緯度
-	int quadrant1 = (int)(Math.random() * 3); //隨機出0~2
+	int quadrant1 = (int)(Math.random() * 3);     //隨機出0~2
 	int quadrant2 = (int)(Math.random() * 3 + 3); //隨機出3~5
 	int quadrant3 = (int)(Math.random() * 3 + 6); //隨機出6~8
-	int quadrant4 = (int)(Math.random() * 3 + 9); // 隨機出9~11
+	int quadrant4 = (int)(Math.random() * 3 + 9); //隨機出9~11
 			
 	
-	@GetMapping(value = "/towerAndBlood")
-	public String towerAndBlood() {
-		CalculateBlood blood = new CalculateBlood();
+	public void towerAndBlood() {
 		quadrant1 = (int)(Math.random() * 3);     // 
 		quadrant2 = (int)(Math.random() * 3 + 3); //重新隨機數字
 		quadrant3 = (int)(Math.random() * 3 + 6); //
 		quadrant4 = (int)(Math.random() * 3 + 9); // 
 		positionAndBlood();
-		blood.updateBlood();
-		return "Update completed.";
 	}
 	/*
 	 * 儲存所有的堡壘位置，並去隨機堡壘位置
