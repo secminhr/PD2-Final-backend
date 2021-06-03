@@ -18,6 +18,7 @@ public class CalculateBlood {
 	 * 將隨機到的四個堡壘座標存到這個類別裡面
 	 */
 	
+	//傳血量、lat、lng
 	public double[] blood(int attackPoints, double[][] attackedPositions, double time) {
 		long neededTime = (long)time;
 		double[] contain = new double[3];
@@ -27,6 +28,7 @@ public class CalculateBlood {
 				remainBlood[0] -= attackPoints;
 				checkBlood(remainBlood);
 				if(remain == true) {
+					updateTowerAndBlood();
 					return gameEnd;
 				} else {
 					contain[0] = remainBlood[0];
@@ -38,6 +40,7 @@ public class CalculateBlood {
 				remainBlood[1] -= attackPoints;
 				checkBlood(remainBlood);
 				if(remain == true) {
+					updateTowerAndBlood();
 					return gameEnd;
 				} else{
 					contain[0] = remainBlood[1];
@@ -49,6 +52,7 @@ public class CalculateBlood {
 				remainBlood[2] -= attackPoints;
 				checkBlood(remainBlood);
 				if(remain == true) {
+					updateTowerAndBlood();
 					return gameEnd;
 				} else {
 					contain[0] = remainBlood[2];
@@ -60,6 +64,7 @@ public class CalculateBlood {
 				remainBlood[3] -= attackPoints;
 				checkBlood(remainBlood);
 				if(remain == true) {
+					updateTowerAndBlood();
 					return gameEnd;
 				} else {
 					contain[0] = remainBlood[3];
@@ -86,7 +91,9 @@ public class CalculateBlood {
 	/*
 	 * 判斷是否所有血量歸零
 	 */
-	public void updateBlood() {
+	public void updateTowerAndBlood() {
+		TowerPosition towerPosition = new TowerPosition();
+		towerPosition.towerAndBlood();
 		for(int i = 0; i < 4; i++) 
 			remainBlood[i] = wholeblood; 
 		remain = false;
@@ -100,6 +107,5 @@ public class CalculateBlood {
 	}
 	/*
 	 * 通知設定完成
-	 */
-	
+	 */	
 }
