@@ -1,11 +1,8 @@
 package ncku.pd2final.Final.websocket;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.stereotype.Component;
-import com.alibaba.fastjson.JSON;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.websocket.*;
 import javax.websocket.OnClose;
@@ -13,13 +10,13 @@ import javax.websocket.OnError;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.server.ServerEndpoint;
+import java.util.HashMap;
+import java.util.Map;
 
-
-
-
-@ServerEndpoint(value = "/websocket")
+@ServerEndpoint(value = "/websocket/renew")
 @Component
-public class WebsocketServer {
+public class renew {
+
     private Session session;
     private String lat,lng,hp = "";
 
@@ -41,13 +38,15 @@ public class WebsocketServer {
 
     @OnMessage
     public void onMessage(String message, Session session) {
-        System.out.println("從使用者端收到的訊息：" + message);
+
         JSONObject jsonObject = JSON.parseObject(message);
-        String hp = jsonObject.getString("hp");
-        String lat = jsonObject.getString("lat");
-        String lng = jsonObject.getString("lng");
+        String tower = jsonObject.getString("number");  //堡壘編號
+        String hp = jsonObject.getString("hp"); //血量
+        String lat = jsonObject.getString("lat"); //緯度
+        String lng = jsonObject.getString("lng"); //經度
 
         Map<String, Object> sendData =  new HashMap<>();
+        sendData.put("number",tower);
         sendData.put("hp", hp);
         sendData.put("lat", lat);
         sendData.put("lng", lng);
