@@ -26,6 +26,8 @@ public class CalculateBlood {
 			Thread.sleep(neededTime * 60 * 1000);
 			if(attackedPositions[0][0] == positions[0][0] && attackedPositions[1][0] == positions[1][0]) {
 				remainBlood[0] -= attackPoints;
+				if(remainBlood[0] <= 0)
+					remainBlood[0] = 0;
 				checkBlood(remainBlood);
 				if(remain == true) {
 					updateTowerAndBlood();
@@ -38,6 +40,8 @@ public class CalculateBlood {
 					return contain;
 			} else if(attackedPositions[0][0] == positions[0][1] && attackedPositions[1][0] == positions[1][1]) {
 				remainBlood[1] -= attackPoints;
+				if(remainBlood[1] <= 0)
+					remainBlood[1] = 0;
 				checkBlood(remainBlood);
 				if(remain == true) {
 					updateTowerAndBlood();
@@ -50,6 +54,8 @@ public class CalculateBlood {
 					return contain;
 			} else if(attackedPositions[0][0] == positions[0][2] && attackedPositions[1][0] == positions[1][2]) { 
 				remainBlood[2] -= attackPoints;
+				if(remainBlood[2] <= 0)
+					remainBlood[2] = 0;
 				checkBlood(remainBlood);
 				if(remain == true) {
 					updateTowerAndBlood();
@@ -62,6 +68,8 @@ public class CalculateBlood {
 					return contain;
 			} else if(attackedPositions[0][0] == positions[0][3] && attackedPositions[1][0] == positions[1][3]) {
 				remainBlood[3] -= attackPoints;
+				if(remainBlood[3] <= 0)
+					remainBlood[3] = 0;
 				checkBlood(remainBlood);
 				if(remain == true) {
 					updateTowerAndBlood();
