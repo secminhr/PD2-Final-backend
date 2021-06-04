@@ -1,9 +1,9 @@
 package ncku.pd2final.Final.tower;
 
 public class CalculateBlood {
-	int wholeblood = 2500;
+	int wholeBlood = 2500;
 	double[][] positions = new double[2][4];
-	int[] remainBlood = {wholeblood, wholeblood, wholeblood, wholeblood};
+	int[] remainBlood = {wholeBlood, wholeBlood, wholeBlood, wholeBlood};
 	boolean remain = false;
 	double[] gameEnd = {-1, -1, -1};
 	
@@ -103,7 +103,7 @@ public class CalculateBlood {
 		TowerPosition towerPosition = new TowerPosition();
 		towerPosition.towerAndBlood();
 		for(int i = 0; i < 4; i++) 
-			remainBlood[i] = wholeblood; 
+			remainBlood[i] = wholeBlood;
 		remain = false;
 	}
 	/*
