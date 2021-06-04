@@ -14,8 +14,7 @@ Register a new player.
 {
   "username": "{specified username}",
   "nickname": "{display name of the player}",
-  "password": "{plain password}",
-  "faction": "{chosen faction}"
+  "password": "{plain password}"
 }
 ```
 
@@ -160,8 +159,7 @@ For example:
     "status": {
         "exp": {current experience point},
         "level": {current level},
-        "nickname": "{nickname}",
-        "faction": "{chosen faction}"
+        "nickname": "{nickname}"
     }
 }
 ```
@@ -173,15 +171,13 @@ For a username whose
 - experience point is 0
 - level is 0
 - nickname (display name) is `s1s`
-- and chosen faction is `A`
 ```json
 {
     "username": "sssss",
     "status": {
         "exp": 0,
         "level": 0,
-        "nickname": "s1s",
-        "faction": "A"
+        "nickname": "s1s"
     }
 }
 ```
