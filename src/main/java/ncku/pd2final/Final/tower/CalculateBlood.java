@@ -19,7 +19,7 @@ public class CalculateBlood {
 	 */
 	
 	//傳血量、lat、lng
-	public double[] blood(int attackPoints, double[][] attackedPositions, double time) {
+	public double[] blood(int attackPoints, double[][] attackedPositions, int time) {
 		long neededTime = (long)time;
 		double[] contain = new double[3];
 		try {
@@ -29,7 +29,7 @@ public class CalculateBlood {
 				if(remainBlood[0] <= 0)
 					remainBlood[0] = 0;
 				checkBlood(remainBlood);
-				if(remain == true) {
+				if(remain) {
 					updateTowerAndBlood();
 					return gameEnd;
 				} else {
@@ -43,7 +43,7 @@ public class CalculateBlood {
 				if(remainBlood[1] <= 0)
 					remainBlood[1] = 0;
 				checkBlood(remainBlood);
-				if(remain == true) {
+				if(remain) {
 					updateTowerAndBlood();
 					return gameEnd;
 				} else{
@@ -57,7 +57,7 @@ public class CalculateBlood {
 				if(remainBlood[2] <= 0)
 					remainBlood[2] = 0;
 				checkBlood(remainBlood);
-				if(remain == true) {
+				if(remain) {
 					updateTowerAndBlood();
 					return gameEnd;
 				} else {
@@ -71,7 +71,7 @@ public class CalculateBlood {
 				if(remainBlood[3] <= 0)
 					remainBlood[3] = 0;
 				checkBlood(remainBlood);
-				if(remain == true) {
+				if(remain) {
 					updateTowerAndBlood();
 					return gameEnd;
 				} else {

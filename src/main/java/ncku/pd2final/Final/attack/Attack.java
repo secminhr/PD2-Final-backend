@@ -10,13 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 public class Attack {
     double preAttackPoints ;
     int attackPoints;
-    double time;
+    int time;
     double[] purpose;
     //latitude = 緯度 ； longitude = 經度！！！
     @GetMapping(value = "/attack")
     public void attack(@RequestParam double[] lat,
                        @RequestParam double[] lon,
-                       @RequestParam double time,
+                       @RequestParam int time,
                        @RequestParam double[] purpose,
                        HttpServletResponse response)
     {
@@ -43,6 +43,7 @@ public class Attack {
             this.purpose = purpose;
 
             //呼叫林欣諴的東西
+            blood(this.attackPoints, this.purpose, this.time) ;
 
         }else
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -64,6 +65,9 @@ public class Attack {
 
     }
 
+    private void blood(int attackPoints, double[] purpose, int time) {
+    }
+
 
     public boolean dataExist(double[] lat,
                              double[] lon,
@@ -77,7 +81,7 @@ public class Attack {
 //    public double showAttackPoints(){
 //        return attackPoints;
 //    }
-//    public double showTime(){
+//    public int showTime(){
 //        return time;
 //    }
 //    public double[] showPurpose(){
