@@ -16,7 +16,7 @@ import javax.websocket.server.ServerEndpoint;
 public class checkGame {
 
     private Session session;
-    private double message ;
+    public String message ; //回傳 -1 -1 -1
 
 
     @OnOpen
@@ -36,8 +36,9 @@ public class checkGame {
     }
 
     @OnMessage
-    public void onMessage(double message, Session session) {
+    public void onMessage(String message, Session session) {
     this.message = message;
+        System.out.println("遊戲已結束");
         sendMessage(JSON.toJSONString(message));
     }
 

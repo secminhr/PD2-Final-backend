@@ -41,15 +41,16 @@ public class renew {
 
         JSONObject jsonObject = JSON.parseObject(message);
         String tower = jsonObject.getString("number");  //堡壘編號
-        String hp = jsonObject.getString("hp"); //血量
+
         String lat = jsonObject.getString("lat"); //緯度
         String lng = jsonObject.getString("lng"); //經度
+        String hp = jsonObject.getString("hp"); //血量
 
         Map<String, Object> sendData =  new HashMap<>();
         sendData.put("number",tower);
-        sendData.put("hp", hp);
         sendData.put("lat", lat);
         sendData.put("lng", lng);
+        sendData.put("hp", hp);
 
         sendMessage(JSON.toJSONString(sendData));
     }

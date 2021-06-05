@@ -2,6 +2,7 @@ package ncku.pd2final.Final.websocket;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import ncku.pd2final.Final.tower.CalculateBlood;
 import org.springframework.stereotype.Component;
 
 
@@ -14,8 +15,6 @@ import javax.websocket.OnError;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.server.ServerEndpoint;
-
-
 
 
 @ServerEndpoint(value = "/websocket/updateBlood")
@@ -43,14 +42,16 @@ public class UpdateBlood {
     @OnMessage
     public void onMessage(String message, Session session) {
         JSONObject jsonObject = JSON.parseObject(message);
-        String hp = jsonObject.getString("hp");
+
         String lat = jsonObject.getString("lat");
         String lng = jsonObject.getString("lng");
+        String hp = jsonObject.getString("hp");
 
         Map<String, Object> sendData =  new HashMap<>();
-        sendData.put("hp", hp);
+
         sendData.put("lat", lat);
         sendData.put("lng", lng);
+        sendData.put("hp", hp);
 
         sendMessage(JSON.toJSONString(sendData));
     }
