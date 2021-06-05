@@ -46,6 +46,9 @@ public class checkGame {
 
         sendMessage(JSON.toJSONString(message));
     }
+    public void sendMessage(double[] getdata)  {
+        this.message=getdata;
+    }
 
     public void sendMessage(String message)  {
         this.session.getAsyncRemote().sendText(message);

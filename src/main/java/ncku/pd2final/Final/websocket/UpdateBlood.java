@@ -60,8 +60,8 @@ public class UpdateBlood {
         this.hp = hp;
         this.lat = lat;
         this.lng = lng;
-
     }
+
     public void sendMessage(String message){
         this.session.getAsyncRemote().sendText(message);
     }
