@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -55,7 +56,13 @@ public class UpdateBlood {
         sendMessage(JSON.toJSONString(sendData));
     }
 
-    public void sendMessage(String message)  {
+    public void sendMessage(double lat, double lng, int hp)  {
+        this.lat = lat;
+        this.lng = lng;
+        this.hp = hp;
+    }
+    public void sendMessage(String message){
         this.session.getAsyncRemote().sendText(message);
     }
+
 }
