@@ -15,10 +15,11 @@ import java.util.Map;
 
 @ServerEndpoint(value = "/websocket/renew")
 @Component
-public class renew {
+public class renew {   //for start new game
 
     private Session session;
-    private String lat,lng,hp = "";
+    public double lat,lng;
+    public int hp;
 
     @OnOpen
     public void onOpen(Session session) {
@@ -40,16 +41,15 @@ public class renew {
     public void onMessage(String message, Session session) {
 
         JSONObject jsonObject = JSON.parseObject(message);
-        String tower = jsonObject.getString("number");  //堡壘編號
-        String hp = jsonObject.getString("hp"); //血量
-        String lat = jsonObject.getString("lat"); //緯度
-        String lng = jsonObject.getString("lng"); //經度
+
+        double lat = jsonObject.getDouble("lat"); //緯度
+        double lng = jsonObject.getDouble("lng"); //經度
+        int hp = jsonObject.getInteger("hp"); //血量
 
         Map<String, Object> sendData =  new HashMap<>();
-        sendData.put("number",tower);
-        sendData.put("hp", hp);
         sendData.put("lat", lat);
         sendData.put("lng", lng);
+        sendData.put("hp", hp);
 
         sendMessage(JSON.toJSONString(sendData));
     }

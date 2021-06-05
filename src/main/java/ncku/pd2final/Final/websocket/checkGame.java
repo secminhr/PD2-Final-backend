@@ -1,6 +1,7 @@
 package ncku.pd2final.Final.websocket;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.stereotype.Component;
 
 import javax.websocket.*;
@@ -9,6 +10,7 @@ import javax.websocket.OnError;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.server.ServerEndpoint;
+import java.util.Arrays;
 
 
 @ServerEndpoint(value = "/websocket/checkgame")
@@ -16,7 +18,7 @@ import javax.websocket.server.ServerEndpoint;
 public class checkGame {
 
     private Session session;
-    private double message ;
+    public double[] message = new double[3]; //回傳 -1 -1 -1
 
 
     @OnOpen
@@ -36,8 +38,12 @@ public class checkGame {
     }
 
     @OnMessage
-    public void onMessage(double message, Session session) {
-    this.message = message;
+    public void onMessage(String message, Session session) {
+        JSONObject jsonObject = JSON.parseObject(message);
+        message = Arrays.toString(this.message) ;
+        System.out.println("遊戲已結束");
+        jsonObject.put("gameend",message);
+
         sendMessage(JSON.toJSONString(message));
     }
 
