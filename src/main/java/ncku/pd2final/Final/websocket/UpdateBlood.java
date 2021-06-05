@@ -21,7 +21,7 @@ import javax.websocket.server.ServerEndpoint;
 @Component
 public class UpdateBlood {
     private Session session;
-    private String lat,lng,hp = "";
+    public String lat,lng,hp = "";
 
     @OnOpen
     public void onOpen(Session session) {

@@ -15,10 +15,10 @@ import java.util.Map;
 
 @ServerEndpoint(value = "/websocket/renew")
 @Component
-public class renew {
+public class renew {   //for start new game
 
     private Session session;
-    private String lat,lng,hp = "";
+    public String lat,lng,hp = "";
 
     @OnOpen
     public void onOpen(Session session) {
