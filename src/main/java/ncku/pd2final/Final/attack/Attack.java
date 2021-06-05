@@ -1,5 +1,6 @@
 package ncku.pd2final.Final.attack;
 
+import ncku.pd2final.Final.tower.CalculateBlood;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,14 +37,22 @@ public class Attack {
             response.setStatus(HttpServletResponse.SC_NO_CONTENT);
             DistanceCalculate test = new DistanceCalculate() ;
 
+            //把purpose格式轉成林欣諴要求的樣子
+            double[][] purposeForCalculateBloodDotBlood = new double[2][1] ;
+            purposeForCalculateBloodDotBlood[0][0] = purpose[0] ;
+            purposeForCalculateBloodDotBlood[1][0] = purpose[1] ;
+
 
             preAttackPoints = test.showMessage(lAL)*0.3 ;
             attackPoints =  (int)preAttackPoints ;
             this.time = time;
-            this.purpose = purpose;
+//            this.purpose = purpose;
+
 
             //呼叫林欣諴的東西
-            blood(this.attackPoints, this.purpose, this.time) ;
+            CalculateBlood bloodCalculator = new CalculateBlood() ;
+
+            bloodCalculator.blood(this.attackPoints, purposeForCalculateBloodDotBlood, this.time) ;
 
         }else
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -65,8 +74,6 @@ public class Attack {
 
     }
 
-    private void blood(int attackPoints, double[] purpose, int time) {
-    }
 
 
     public boolean dataExist(double[] lat,

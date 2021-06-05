@@ -19,7 +19,11 @@ public class TowerPosition {
 	int quadrant2 = (int)(Math.random() * 3 + 3); //隨機出3~5
 	int quadrant3 = (int)(Math.random() * 3 + 6); //隨機出6~8
 	int quadrant4 = (int)(Math.random() * 3 + 9); //隨機出9~11
-			
+
+
+
+
+
 	
 	public void towerAndBlood() {
 		quadrant1 = (int)(Math.random() * 3);     // 
@@ -45,13 +49,17 @@ public class TowerPosition {
 			positionAndBlood[i][2] = randomPosition[i][2];
 			positionAndBlood[i][3] = randomPosition[i][3];
 		}
-		
+
+
+
 		CalculateBlood calculateblood = new CalculateBlood();
 		calculateblood.storePositions(randomPosition);
 		for(int i = 0; i < 4; i++) {
 			positionAndBlood[2][i] = calculateblood.remainBlood[i]; 
 		}
-		
+
+
+
 		return positionAndBlood;
 		
 	}
