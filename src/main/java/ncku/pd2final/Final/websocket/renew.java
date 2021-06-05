@@ -18,7 +18,8 @@ import java.util.Map;
 public class renew {   //for start new game
 
     private Session session;
-    public String lat,lng,hp = "";
+    public double lat,lng;
+    public int hp;
 
     @OnOpen
     public void onOpen(Session session) {
@@ -40,14 +41,12 @@ public class renew {   //for start new game
     public void onMessage(String message, Session session) {
 
         JSONObject jsonObject = JSON.parseObject(message);
-        String tower = jsonObject.getString("number");  //堡壘編號
 
-        String lat = jsonObject.getString("lat"); //緯度
-        String lng = jsonObject.getString("lng"); //經度
-        String hp = jsonObject.getString("hp"); //血量
+        double lat = jsonObject.getDouble("lat"); //緯度
+        double lng = jsonObject.getDouble("lng"); //經度
+        int hp = jsonObject.getInteger("hp"); //血量
 
         Map<String, Object> sendData =  new HashMap<>();
-        sendData.put("number",tower);
         sendData.put("lat", lat);
         sendData.put("lng", lng);
         sendData.put("hp", hp);
