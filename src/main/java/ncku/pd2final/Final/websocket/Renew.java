@@ -10,16 +10,12 @@ import javax.websocket.OnError;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.server.ServerEndpoint;
-import java.util.Arrays;
 
-
-@ServerEndpoint(value = "/websocket/checkgame")
+@ServerEndpoint(value = "/websocket/renew")
 @Component
-public class checkGame {
+public class Renew {   //for start new game
 
     private Session session;
-    public double[] message = new double[3]; //回傳 -1 -1 -1
-
 
     @OnOpen
     public void onOpen(Session session) {
@@ -39,20 +35,12 @@ public class checkGame {
 
     @OnMessage
     public void onMessage(String message, Session session) {
-        JSONObject jsonObject = JSON.parseObject(message);
-        message = Arrays.toString(this.message) ;
-        System.out.println("遊戲已結束");
-        jsonObject.put("gameend",message);
 
         sendMessage(JSON.toJSONString(message));
     }
-    public void sendMessage(double[] getdata)  {
-        this.message=getdata;
-    }
+
 
     public void sendMessage(String message)  {
         this.session.getAsyncRemote().sendText(message);
-
     }
-
 }
