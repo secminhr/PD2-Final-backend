@@ -1,7 +1,13 @@
 package ncku.pd2final.Final.tower;
 
-public class DealWithBlood {
-    public void dealWithBlood(){
+import java.util.TimerTask;
 
+
+public class DealWithBlood extends TimerTask {
+    public CalculateBlood cal ;
+    @Override
+    public void run() {
+        System.out.println("t");
+        cal.blood();
     }
 }

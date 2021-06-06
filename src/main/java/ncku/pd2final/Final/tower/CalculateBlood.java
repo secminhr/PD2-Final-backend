@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
+
+
 @Component
 public class CalculateBlood {
 	int wholeBlood = 2500;                                       			//一開始血量
@@ -21,24 +23,29 @@ public class CalculateBlood {
 	public void storePositions(double[][] positions) {
 		for(int i = 0; i < 2; i++) {
 			for(int j = 0 ; j < 4; j++) {
-				this.positions[i][j] = positions[i][j]; 
+				this.positions[i][j] = positions[i][j];
 			}
 		}
 	}
 	/*
 	 * 將隨機到的四個堡壘座標存到這個類別裡面
 	 */
-
+	int attackPoints;
+	double[][] attackedPositions;
+	int time;
+	public void getvalue(int attackPoints, double[][] attackedPositions, int time)
+	{
+		this.attackedPositions = attackedPositions;
+		this.time = time;
+		this.attackPoints = attackPoints;
+	}
 	//傳血量、lat、lng
-	public void blood(int attackPoints, double[][] attackedPositions, int time) {
+	public void blood() {
 		UpdateBlood updateBlood = new UpdateBlood();
 		CheckGame check = new CheckGame();
 		Renew renew = new Renew();
 		long neededTime = (long)time;
-//
-//		Timer simpleTimer = new Timer() ;
-//		DealWithBlood dealBlood = new DealWithBlood() ;
-//		simpleTimer.schedule(dealBlood.dealWithBlood(), time) ;
+
 
 		if(attackedPositions[0][0] == positions[0][0] && attackedPositions[1][0] == positions[1][0]) {
 			remainBlood[0] -= attackPoints;
@@ -112,6 +119,7 @@ public class CalculateBlood {
 			remainBlood[i] = wholeBlood;
 		remain = false;
 	}
+
 	/*
 	 * 更新血量(可能沒辦法更新到數字，所以需要測試)
 	 */

@@ -39,7 +39,7 @@ public class UpdateBlood {
 
     @OnMessage
     public void onMessage(String message, Session session) {
-
+        //intentionally empty
     }
 
     public void sendMessage(int hp, double lat, double lng)  {
