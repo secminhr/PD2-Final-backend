@@ -43,17 +43,12 @@ public class UpdateBlood {
     public void onMessage(String message, Session session) {
         JSONObject jsonObject = JSON.parseObject(message);
 
-        int hp = jsonObject.getInteger("hp"); //血量
-        double lat = jsonObject.getDouble("lat"); //緯度
-        double lng = jsonObject.getDouble("lng"); //經度
-
-
         Map<String, Object> sendData =  new HashMap<>();
         sendData.put("hp", hp);
         sendData.put("lat", lat);
         sendData.put("lng", lng);
 
-        sendMessage(JSON.toJSONString(sendData));
+        sendMessage(jsonObject.toJSONString());
     }
 
     public void sendMessage(int hp, double lat, double lng)  {
@@ -65,5 +60,13 @@ public class UpdateBlood {
     public void sendMessage(String message){
         this.session.getAsyncRemote().sendText(message);
     }
+/* public void sendMessage(String message){
+    JSONObject jsonObject = JSON.parseObject(message);
 
+        Map<String, Object> sendData =  new HashMap<>();
+        sendData.put("hp", hp);
+        sendData.put("lat", lat);
+        sendData.put("lng", lng);
+}
+ */
 }
