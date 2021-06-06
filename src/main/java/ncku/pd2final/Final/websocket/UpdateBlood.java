@@ -1,7 +1,6 @@
 package ncku.pd2final.Final.websocket;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -22,6 +21,7 @@ public class UpdateBlood {
     public double lat,lng;
     public int hp;
 
+
     @OnOpen
     public void onOpen(Session session) {
         this.session = session;
@@ -40,32 +40,26 @@ public class UpdateBlood {
 
     @OnMessage
     public void onMessage(String message, Session session) {
-        JSONObject jsonObject = JSON.parseObject(message);
 
-        Map<String, Object> sendData =  new HashMap<>();
-        sendData.put("hp", hp);
-        sendData.put("lat", lat);
-        sendData.put("lng", lng);
-
-        sendMessage(jsonObject.toJSONString(sendData));
     }
 
     public void sendMessage(int hp, double lat, double lng)  {
         this.hp = hp;
         this.lat = lat;
         this.lng = lng;
+        sendMessage(data());
     }
 
     public void sendMessage(String message){
         this.session.getAsyncRemote().sendText(message);
     }
-/* public void sendMessage(String message){
-    JSONObject jsonObject = JSON.parseObject(message);
 
+    public String data(){
         Map<String, Object> sendData =  new HashMap<>();
         sendData.put("hp", hp);
         sendData.put("lat", lat);
         sendData.put("lng", lng);
-}
- */
+
+        return JSON.toJSONString(sendData);
+    }
 }
