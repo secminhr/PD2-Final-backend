@@ -43,7 +43,8 @@ public class Attack {
             purposeForCalculateBloodDotBlood[1][0] = purpose[1] ;
 
 
-            preAttackPoints = test.showMessage(lAL)*0.3 ;
+//            preAttackPoints = test.showMessage(lAL)*0.3 ;
+            preAttackPoints = test.showMessage(lAL)*50 ;
             attackPoints =  (int)preAttackPoints ;
             this.time = time;
 //            this.purpose = purpose;

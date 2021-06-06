@@ -1,8 +1,7 @@
 package ncku.pd2final.Final.tower;
 
-import ncku.pd2final.Final.websocket.CheckGame;
-import ncku.pd2final.Final.websocket.Renew;
-import ncku.pd2final.Final.websocket.UpdateBlood;
+import ncku.pd2final.Final.websocket.*;
+
 
 public class CalculateBlood {
 	int wholeBlood = 2500;                                       			//一開始血量
