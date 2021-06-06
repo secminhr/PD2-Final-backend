@@ -25,11 +25,13 @@ public class CheckGame {
     @OnClose
     public void onClose(Session session) {
         System.out.println("連線已經關閉");
+        sessions.remove(session);
     }
 
     @OnError
     public void onError(Throwable error, Session session) {
         System.out.println("連線發生錯誤");
+        sessions.remove(session);
     }
 
     @OnMessage

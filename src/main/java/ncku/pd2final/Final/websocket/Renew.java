@@ -24,6 +24,7 @@ public class Renew {   //for start new game
     @OnClose
     public void onClose(Session session) {
         System.out.println("連線已經關閉");
+        sessions.remove(session);
     }
 
     @OnError

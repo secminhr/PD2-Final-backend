@@ -1,6 +1,8 @@
 package ncku.pd2final.Final.tower;
 
-import ncku.pd2final.Final.websocket.*;
+import ncku.pd2final.Final.websocket.CheckGame;
+import ncku.pd2final.Final.websocket.Renew;
+import ncku.pd2final.Final.websocket.UpdateBlood;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -33,13 +35,17 @@ public class CalculateBlood {
 		CheckGame check = new CheckGame();
 		Renew renew = new Renew();
 		long neededTime = (long)time;
-		
+//
+//		Timer simpleTimer = new Timer() ;
+//		DealWithBlood dealBlood = new DealWithBlood() ;
+//		simpleTimer.schedule(dealBlood.dealWithBlood(), time) ;
+
 		if(attackedPositions[0][0] == positions[0][0] && attackedPositions[1][0] == positions[1][0]) {
 			remainBlood[0] -= attackPoints;
 			if(remainBlood[0] <= 0)
 				remainBlood[0] = 0;
 			checkBlood(remainBlood);
-			if(remain == true) {
+			if(remain) {
 				check.sendMessage(gameEnd);	//傳送四個堡壘都沒寫的訊息[-1、-1、-1]
 				updateTowerAndBlood();		//更新血量跟位置
 				renew.sendMessage(update); 	//通知已更改新的血量跟位置
@@ -51,14 +57,14 @@ public class CalculateBlood {
 			if(remainBlood[1] <= 0)
 				remainBlood[1] = 0;
 			checkBlood(remainBlood);
-			if(remain == true) {
+			if(remain) {
 				check.sendMessage(gameEnd);	//傳送四個堡壘都沒寫的訊息[-1、-1、-1]
 				updateTowerAndBlood();		//更新血量跟位置
 				renew.sendMessage(update); 	//通知已更改新的血量跟位置
 			} else {
 				updateBlood.sendMessage(remainBlood[1], attackedPositions[0][0], attackedPositions[1][0]);
-		}
-			} else if(attackedPositions[0][0] == positions[0][2] && attackedPositions[1][0] == positions[1][2]) { 
+			}
+		} else if(attackedPositions[0][0] == positions[0][2] && attackedPositions[1][0] == positions[1][2]) {
 			remainBlood[2] -= attackPoints;
 			if(remainBlood[2] <= 0)
 				remainBlood[2] = 0;
@@ -69,8 +75,8 @@ public class CalculateBlood {
 				renew.sendMessage(update); 	//通知已更改新的血量跟位置
 			} else {
 				updateBlood.sendMessage(remainBlood[2], attackedPositions[0][0], attackedPositions[1][0]);
-		}
-			} else if(attackedPositions[0][0] == positions[0][3] && attackedPositions[1][0] == positions[1][3]) {
+			}
+		} else if(attackedPositions[0][0] == positions[0][3] && attackedPositions[1][0] == positions[1][3]) {
 			remainBlood[3] -= attackPoints;
 			if(remainBlood[3] <= 0)
 				remainBlood[3] = 0;
@@ -82,7 +88,8 @@ public class CalculateBlood {
 			} else {
 				updateBlood.sendMessage(remainBlood[3], attackedPositions[0][0], attackedPositions[1][0]);
 			}
-		} 
+		}
+
 	}
 
 	/*
