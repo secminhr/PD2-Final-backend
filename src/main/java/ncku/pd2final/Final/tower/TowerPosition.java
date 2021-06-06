@@ -1,7 +1,7 @@
 package ncku.pd2final.Final.tower;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -14,6 +14,9 @@ public class TowerPosition {
 			       {lng[0], lng[1], lng[2], lng[3], lng[4], lng[5], lng[6], lng[7], lng[8], lng[9], lng[10], lng[11]}};
 	double[][] randomPosition = new double[2][4];
 	double[][] positionAndBlood = new double[3][4];
+
+	@Autowired CalculateBlood calculateBlood;
+
 	//隨機選出四個經緯度
 	int quadrant1 = (int)(Math.random() * 3);     //隨機出0~2
 	int quadrant2 = (int)(Math.random() * 3 + 3); //隨機出3~5
@@ -21,10 +24,6 @@ public class TowerPosition {
 	int quadrant4 = (int)(Math.random() * 3 + 9); //隨機出9~11
 
 
-
-
-
-	
 	public void towerAndBlood() {
 		quadrant1 = (int)(Math.random() * 3);     // 
 		quadrant2 = (int)(Math.random() * 3 + 3); //重新隨機數字
@@ -32,6 +31,7 @@ public class TowerPosition {
 		quadrant4 = (int)(Math.random() * 3 + 9); // 
 		positionAndBlood();
 	}
+
 	/*
 	 * 儲存所有的堡壘位置，並去隨機堡壘位置
 	 */
@@ -50,16 +50,10 @@ public class TowerPosition {
 			positionAndBlood[i][3] = randomPosition[i][3];
 		}
 
-
-
-		CalculateBlood calculateblood = new CalculateBlood();
-		calculateblood.storePositions(randomPosition);
+		calculateBlood.storePositions(randomPosition);
 		for(int i = 0; i < 4; i++) {
-			positionAndBlood[2][i] = calculateblood.remainBlood[i]; 
+			positionAndBlood[2][i] = calculateBlood.remainBlood[i];
 		}
-
-
-
 		return positionAndBlood;
 		
 	}

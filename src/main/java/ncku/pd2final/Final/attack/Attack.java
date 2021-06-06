@@ -1,6 +1,7 @@
 package ncku.pd2final.Final.attack;
 
 import ncku.pd2final.Final.tower.CalculateBlood;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +14,7 @@ public class Attack {
     int attackPoints;
     int time;
     double[] purpose;
+    @Autowired CalculateBlood bloodCalculator;
     //latitude = 緯度 ； longitude = 經度！！！
     @GetMapping(value = "/attack")
     public void attack(@RequestParam double[] lat,
@@ -51,8 +53,6 @@ public class Attack {
 
 
             //呼叫林欣諴的東西
-            CalculateBlood bloodCalculator = new CalculateBlood() ;
-
             bloodCalculator.blood(this.attackPoints, purposeForCalculateBloodDotBlood, this.time) ;
 
         }else

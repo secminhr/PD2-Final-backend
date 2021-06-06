@@ -1,8 +1,11 @@
 package ncku.pd2final.Final.tower;
 
 import ncku.pd2final.Final.websocket.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 
+@Component
 public class CalculateBlood {
 	int wholeBlood = 2500;                                       			//一開始血量
 	double[][] positions = new double[2][4];					//要儲存隨機的位置
@@ -10,6 +13,8 @@ public class CalculateBlood {
 	boolean remain = false;								//判斷是否還有血量
 	double[] gameEnd = {-1, -1, -1};						//給前端遊戲結束
 	String update = "update complete";						//確認完已經更新完成，就回傳給前端這個訊息
+
+	@Autowired TowerPosition towerPosition;
 	
 	public void storePositions(double[][] positions) {
 		for(int i = 0; i < 2; i++) {
@@ -21,13 +26,12 @@ public class CalculateBlood {
 	/*
 	 * 將隨機到的四個堡壘座標存到這個類別裡面
 	 */
-	
+
 	//傳血量、lat、lng
 	public void blood(int attackPoints, double[][] attackedPositions, int time) {
 		UpdateBlood updateBlood = new UpdateBlood();
 		CheckGame check = new CheckGame();
 		Renew renew = new Renew();
-		
 		long neededTime = (long)time;
 		
 		if(attackedPositions[0][0] == positions[0][0] && attackedPositions[1][0] == positions[1][0]) {
@@ -96,9 +100,8 @@ public class CalculateBlood {
 	 * 判斷是否所有血量歸零
 	 */
 	public void updateTowerAndBlood() {
-		TowerPosition towerPosition = new TowerPosition();
 		towerPosition.towerAndBlood();
-		for(int i = 0; i < 4; i++) 
+		for(int i = 0; i < 4; i++)
 			remainBlood[i] = wholeBlood;
 		remain = false;
 	}
