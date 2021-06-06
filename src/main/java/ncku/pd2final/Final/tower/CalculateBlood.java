@@ -39,7 +39,7 @@ public class CalculateBlood {
 			if(remain == true) {
 				check.sendMessage(gameEnd);	//傳送四個堡壘都沒寫的訊息[-1、-1、-1]
 				updateTowerAndBlood();		//更新血量跟位置
-				renew.sendMessage(update); 	//回傳新的血量跟位置
+				renew.sendMessage(update); 	//通知已更改新的血量跟位置
 			} else {
 				updateBlood.sendMessage(remainBlood[0], attackedPositions[0][0], attackedPositions[1][0]);
 			}
@@ -51,7 +51,7 @@ public class CalculateBlood {
 			if(remain == true) {
 				check.sendMessage(gameEnd);	//傳送四個堡壘都沒寫的訊息[-1、-1、-1]
 				updateTowerAndBlood();		//更新血量跟位置
-				renew.sendMessage(update); 	//回傳新的血量跟位置
+				renew.sendMessage(update); 	//通知已更改新的血量跟位置
 			} else {
 				updateBlood.sendMessage(remainBlood[1], attackedPositions[0][0], attackedPositions[1][0]);
 		}
@@ -63,7 +63,7 @@ public class CalculateBlood {
 			if(remain) {
 				check.sendMessage(gameEnd);	//傳送四個堡壘都沒寫的訊息[-1、-1、-1]
 				updateTowerAndBlood();		//更新血量跟位置
-				renew.sendMessage(update); 	//回傳新的血量跟位置
+				renew.sendMessage(update); 	//通知已更改新的血量跟位置
 			} else {
 				updateBlood.sendMessage(remainBlood[2], attackedPositions[0][0], attackedPositions[1][0]);
 		}
@@ -75,7 +75,7 @@ public class CalculateBlood {
 			if(remain) {
 				check.sendMessage(gameEnd);	//傳送四個堡壘都沒寫的訊息[-1、-1、-1]
 				updateTowerAndBlood();		//更新血量跟位置
-				renew.sendMessage(update); 	//回傳新的血量跟位置
+				renew.sendMessage(update); 	//通知已更改新的血量跟位置
 			} else {
 				updateBlood.sendMessage(remainBlood[3], attackedPositions[0][0], attackedPositions[1][0]);
 			}
