@@ -12,8 +12,7 @@ public class DealWithBlood extends TimerTask {
 
     public DealWithBlood(CalculateBlood cal, int attackPoints, double[][] purpose, int time) {
         this.cal = cal;
-        this.attackPoints = 1250;
-//        this.attackPoints = attackPoints;
+        this.attackPoints = attackPoints;
         this.purpose = Arrays.stream(purpose).map(double[]::clone).toArray(double[][]::new);
         this.time = time;
     }
