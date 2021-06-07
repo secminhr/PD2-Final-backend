@@ -52,9 +52,7 @@ public class Attack {
             //呼叫林欣諴的東西
             Timer simpleTimer = new Timer() ;
 
-            bloodCalculator.getvalue(this.attackPoints, purposeForCalculateBloodDotBlood, this.time);
-            DealWithBlood dealWithBlood = new DealWithBlood();
-            dealWithBlood.cal = bloodCalculator ;
+            DealWithBlood dealWithBlood = new DealWithBlood(bloodCalculator, this.attackPoints, purposeForCalculateBloodDotBlood, this.time);
             simpleTimer.schedule(dealWithBlood, this.time) ;
 
         }else

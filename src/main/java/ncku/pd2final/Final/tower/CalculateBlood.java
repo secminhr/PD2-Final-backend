@@ -30,17 +30,9 @@ public class CalculateBlood {
 	/*
 	 * 將隨機到的四個堡壘座標存到這個類別裡面
 	 */
-	int attackPoints;
-	double[][] attackedPositions;
-	int time;
-	public void getvalue(int attackPoints, double[][] attackedPositions, int time)
-	{
-		this.attackedPositions = attackedPositions;
-		this.time = time;
-		this.attackPoints = attackPoints;
-	}
+
 	//傳血量、lat、lng
-	public void blood() {
+	public void blood(int attackPoints, double[][] attackedPositions, int time) {
 		UpdateBlood updateBlood = new UpdateBlood();
 		CheckGame check = new CheckGame();
 		Renew renew = new Renew();
