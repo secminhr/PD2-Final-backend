@@ -1,10 +1,13 @@
 package ncku.pd2final.Final.websocket;
 
+import com.alibaba.fastjson.JSON;
 import org.springframework.stereotype.Component;
 
 import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 @ServerEndpoint(value = "/websocket/checkgame")
@@ -39,9 +42,10 @@ public class CheckGame {
 
     }
 
-    public void sendMessage(double[] getData)  {
-        //this.message=getData;
-        sendMessage("abc");
+    public void sendMessage(double[] getdata)  {
+        Map<String, Object> sendData =  new HashMap<>();
+        sendData.put("gameend",getdata);
+        sendMessage(JSON.toJSONString(sendData));
     }
 
     public void sendMessage(String message)  {
