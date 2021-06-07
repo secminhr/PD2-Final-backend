@@ -35,8 +35,6 @@ public class Renew {   //for start new game
 
     @OnMessage
     public void onMessage(String message, Session session) {
-
-        sendMessage(JSON.toJSONString(message));
     }
 
 
